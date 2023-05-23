@@ -1,0 +1,29 @@
+<div class="container mt-5">
+  <h1 class="text-center mb-5">My Tasks 📝</h1>
+  <div class="container border border-dark p-5 mb-3 w-50">
+    <ul>
+      <% @tasks.each do |task| %>
+        <li class="list-unstyled">
+          <% if task.completed %>
+            <i class="fa-regular fa-square-check fs-4"></i>
+          <% else %>
+            <i class="fa-regular fa-square fs-4"></i>
+          <% end %>
+          <%= link_to task.title, task_path(task), class: "ms-1 text-decoration-none text-secondary fs-4" %>
+          <%= link_to task_path(task.id),  data: {turbo_method: :delete, turbo_confirm: "Delete #{task.title}?"} do %>
+            <i class="fa-regular fa-trash-can ms-2 text-danger"></i>
+          <% end %>
+          <%= link_to edit_task_path(task.id) do %>
+            <i class="fa-solid fa-pen-to-square ms-1 text-secondary"></i>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="text-center">
+    <%= link_to new_task_path, class: "btn btn-dark" do %>
+      <i class="fa-solid fa-square-plus"></i> Add a new task
+    <% end %>
+  </div>
+</div>
