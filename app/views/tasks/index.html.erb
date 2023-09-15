@@ -10,7 +10,7 @@
             <i class="fa-regular fa-square fs-4"></i>
           <% end %>
           <%= link_to task.title, task_path(task), class: "ms-1 text-decoration-none text-secondary fs-4" %>
-          <%= link_to task_path(task.id),  data: {turbo_method: :delete, turbo_confirm: "Delete #{task.title}?"} do %>
+          <%= link_to task_path(task.id),  data: {turbo_method: :delete, turbo_confirm: "Delete '#{task.title.capitalize}'?"} do %>
             <i class="fa-regular fa-trash-can ms-2 text-danger"></i>
           <% end %>
           <%= link_to edit_task_path(task.id) do %>
